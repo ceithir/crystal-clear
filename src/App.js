@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import CrystalCard from './components/CrystalCard';
+import Field from './components/Field';
+import { loadCrystalCards } from './cards/crystals';
+import Grid from '@material-ui/core/Grid';
 import './App.css';
+
+const hand = loadCrystalCards(['light-1', ...Array(9).fill('dark-1')]);
 
 class App extends Component {
   render() {
     return (
       <React.Fragment>
         <CssBaseline />
-        <CrystalCard
-          name={`A tiny bit of light`}
-          text={`Grant +1 light energy.`}
-          flavor={`It’s not much, but it’s the spark of hope.`}
-        />
-        <CrystalCard
-          name={`Darkness`}
-          text={`You must destroy all of those to purify the crystal.`}
-          flavor={`Minor flaws turned into gulfs of despair through years of neglect.`}
-          theme={`dark`}
-        />
+        <Grid container>
+          <Grid xs />
+          <Grid item xs={8}>
+            <Field hand={hand} />
+          </Grid>
+          <Grid xs />
+        </Grid>
       </React.Fragment>
     );
   }
